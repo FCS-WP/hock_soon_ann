@@ -1,0 +1,263 @@
+// ============================================================
+// Product Carousel — Slick-powered
+// Beige card, centre slide larger (scale), side slides dimmed.
+// ============================================================
+
+$carousel-bg:         #f5f0e8;
+$carousel-text-dark:  #1a1a1a;
+$carousel-transition: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+$img-size:            240px;   // base circle diameter
+$scale-active:        1;
+$scale-side:          0.65;
+$thumb-size:          80px;
+
+// ------------------------------------------------------------
+// Outer wrapper
+// ------------------------------------------------------------
+.product-carousel {
+  // background-color: $carousel-bg;
+  border-radius: 16px;
+  padding: 40px 0 32px;
+  // max-width: 960px;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: inherit;
+  box-sizing: border-box;
+  position: relative;
+}
+
+// ------------------------------------------------------------
+// Main Slick track
+// ------------------------------------------------------------
+.product-carousel__main {
+  // Slick adds overflow:hidden itself; we just need to ensure
+  // the wrapper doesn't clip the scaled-up centre slide shadow.
+  padding: 20px 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 0;
+    border-radius: 100%;
+    border: 20px solid #F6F6F2;
+    width: 60%;
+    padding-top: 60%;
+    box-sizing: content-box;
+  }
+
+  // Slick prev/next arrows — reuse our design
+  .slick-prev,
+  .slick-next {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    &::before {
+      font-size: 18px;
+      color: $carousel-text-dark;
+      opacity: 1;
+    }
+  }
+
+  .slick-prev { left: 12px; }
+  .slick-next { right: 12px; }
+}
+
+// ------------------------------------------------------------
+// Individual slide
+// ------------------------------------------------------------
+.product-carousel__slide {
+  display: flex !important;   // override Slick's block
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  box-sizing: border-box;
+  outline: none;
+
+  // All slides start dimmed; Slick adds .slick-current to the active one
+  opacity: 0.45;
+  transition: opacity $carousel-transition;
+
+  &.slick-current {
+    opacity: 1;
+  }
+}
+
+// ------------------------------------------------------------
+// Image circle — scale via transform (layout stays stable)
+// ------------------------------------------------------------
+.product-carousel__img-wrap {
+  border-radius: 50%;
+  overflow: hidden;
+  // background-color: darken($carousel-bg, 5%);
+  flex-shrink: 0;
+  width: $img-size;
+  height: $img-size;
+  transform: scale($scale-side);
+  transform-origin: center center;
+  transition: transform $carousel-transition, box-shadow $carousel-transition;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .slick-current & {
+    transform: scale($scale-active);
+    // box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// ------------------------------------------------------------
+// Slide text (hidden on non-active slides)
+// ------------------------------------------------------------
+.product-carousel__slide-info {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $carousel-transition;
+
+  .slick-current & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.product-carousel__slide-name {
+  font-family: $bebas;
+  color: $ann-light-blue;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.product-carousel__slide-price {
+  font-family: $bebas;
+  color: $ann-blue;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.product-carousel__slide-link {
+  display: inline-block;
+  color: $ann-light-blue;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+  margin-top: 4px;
+}
+
+// ------------------------------------------------------------
+// Thumbnail strip (second Slick instance, asNavFor)
+// ------------------------------------------------------------
+.product-carousel__thumbs {
+  padding: 50px 32px 0;
+
+  // Hide Slick arrows on the thumb strip
+  .slick-prev,
+  .slick-next { display: none !important; }
+}
+
+.product-carousel__thumb {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 7px;
+  outline: none;
+  transition: transform 0.2s ease;
+}
+
+.product-carousel__thumb-image-wrap {
+  width: $thumb-size;
+  height: $thumb-size;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: border-color $carousel-transition, box-shadow $carousel-transition;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.product-carousel__thumb-name {
+  font-family: $bebas;
+  color: $ann-grey !important;
+  margin-top: 6px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: $carousel-text-dark;
+  line-height: 1.3;
+  transition: color $carousel-transition;
+  @include limit-row(2);
+}
+
+// ------------------------------------------------------------
+// Responsive — mobile
+// ------------------------------------------------------------
+@media (max-width: 600px) {
+  .product-carousel {
+    padding: 28px 0 24px;
+  }
+
+  .product-carousel__img-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .product-carousel__slide-name  { font-size: 1.1rem; }
+  .product-carousel__slide-price { font-size: 0.95rem; }
+
+  .product-carousel__main {
+    .slick-prev,
+    .slick-next {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .product-carousel__thumbs {
+    padding: 4px 16px 0;
+  }
+
+  .product-carousel__thumb-image-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .product-carousel__thumb-name { font-size: 0.62rem; }
+}

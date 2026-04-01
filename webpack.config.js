@@ -82,6 +82,9 @@ module.exports = [
         },
       ],
     },
+    externals: {
+      jquery: 'jQuery', 
+    },
     plugins: [
       // Get ENV Variables
       // clear out build directories on each build

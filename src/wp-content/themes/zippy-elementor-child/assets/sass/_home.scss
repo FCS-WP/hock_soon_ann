@@ -1,0 +1,14 @@
+.about-col {
+    &--image {
+        @include only-mobile {
+            margin-top: 30px;
+        }
+    }
+}
+
+.ann-about-section {
+    @include only-mobile {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+}

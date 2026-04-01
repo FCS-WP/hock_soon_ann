@@ -1,0 +1,510 @@
+// Header Styles
+// ========================================
+// Custom classes used in the Elementor header template:
+//   .header-section       — outer section wrapper
+//   .header-logo          — logo column
+//   .header-nav           — navigation column
+//   .header-actions       — search + cart column
+
+// ---- Outer section ----
+.header-section {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  // Tighten the Elementor container padding
+  > .elementor-container {
+    align-items: center !important;
+    min-height: 90px;
+  }
+}
+
+// ---- Column 1: Logo ----
+.header-logo {
+  // Let the logo image breathe
+  .elementor-widget-image {
+    a img {
+      max-height: 80px;
+      width: auto;
+      display: block;
+    }
+  }
+}
+
+// ---- Column 2: Navigation ----
+.header-nav {
+  // Elementor nav-menu widget
+  .elementor-nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      > a {
+        font-family: 'Bebas Neue', sans-serif !important;
+        font-size: 20px !important;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        color: $ann-blue !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px 20px;
+        display: block;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus {
+          color: $ann-light-blue !important;
+        }
+      }
+
+      // Active / current page
+      &.current-menu-item > a,
+      &.current-menu-ancestor > a {
+        color: $ann-light-blue !important;
+      }
+    }
+  }
+
+  // Elementor nav-menu widget — override default styles
+  .elementor-widget-nav-menu {
+    .elementor-nav-menu--main {
+      .elementor-item {
+        font-family: 'Bebas Neue', sans-serif !important;
+        font-size: 20px !important;
+        font-weight: 400 !important;
+        letter-spacing: 1.5px;
+        color: $ann-blue !important;
+        text-transform: uppercase;
+        padding: 8px 20px !important;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus,
+        &.elementor-item-active,
+        &.highlighted {
+          color: $ann-light-blue !important;
+        }
+      }
+
+      // Remove default underline indicator
+      .elementor-item::after,
+      .elementor-item::before {
+        display: none !important;
+      }
+    }
+  }
+
+  @include only-mobile {
+    order: -1;
+    margin-right: 10px;
+  }
+}
+
+// ---- Column 3: Search + Cart ----
+.header-actions .elementor-widget-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: nowrap;
+  width: 100%;
+
+  // ---- Search form ----
+  .header-search {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #c8c8c8;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #ffffff;
+    height: 40px;
+
+    input[type="search"],
+    input[type="text"] {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: #555555;
+      padding: 0 14px;
+      width: 160px;
+      height: 100%;
+
+      &::placeholder {
+        color: #aaaaaa;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+    }
+
+    // Search submit button (orange circle)
+    button[type="submit"],
+    input[type="submit"] {
+      background-color: $ann-light-blue !important;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      margin: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+      padding: 0;
+      flex-shrink: 0;
+
+      i,
+      svg {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+        font-size: 15px !important;
+        width: 15px;
+        height: 15px;
+      }
+
+      &:hover {
+        background-color: $ann-blue !important;
+      }
+    }
+  }
+
+  // Elementor search widget override
+  .elementor-widget-search-form {
+    margin: 0;
+
+    .elementor-search-form {
+      border: 1.5px solid #c8c8c8 !important;
+      border-radius: 30px !important;
+      overflow: hidden;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      height: 40px;
+
+      &__container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__input {
+        font-family: $bebas !important;
+        font-size: 16px !important;
+        color: $ann-grey !important;
+        padding: 0 14px !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        letter-spacing: 0.5px;
+
+        &::placeholder {
+          color: #aaaaaa;
+          text-transform: uppercase;
+          font-size: 16px;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      &__submit {
+        background-color: $ann-light-blue !important;
+        border-radius: 50% !important;
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        margin: 2px !important;
+        border: none !important;
+        cursor: pointer;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease;
+        flex-shrink: 0;
+
+        i,
+        svg {
+          color: #ffffff !important;
+          fill: #ffffff !important;
+          font-size: 15px !important;
+        }
+
+        &:hover {
+          background-color: $ann-blue !important;
+        }
+      }
+    }
+  }
+
+  // ---- Cart icon button ----
+  .header-cart {
+    .elementor-button,
+    a.cart-button {
+      background-color: $ann-light-blue !important;
+      border-radius: 50% !important;
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      padding: 0 !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      position: relative;
+
+      .elementor-button-content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .elementor-button-text {
+        display: none !important;
+      }
+
+      i,
+      svg {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+        font-size: 18px !important;
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        background-color: $ann-blue !important;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // WooCommerce cart widget
+  .elementor-widget-woocommerce-menu-cart {
+    width: auto !important;
+
+    .elementor-menu-cart__toggle_button {
+      background-color: $ann-light-blue !important;
+      border-radius: 50% !important;
+      width: 40px !important;
+      height: 40px !important;
+      padding: 0 !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transition: background-color 0.2s ease;
+
+      .elementor-button-text {
+        display: none !important;
+      }
+
+      i,
+      svg {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+        font-size: 18px !important;
+      }
+
+      &:hover {
+        background-color: $ann-blue !important;
+      }
+    }
+
+    // Cart item count badge
+    .elementor-menu-cart__toggle_button .elementor-button-icon .e-font-icon-svg {
+      fill: #ffffff !important;
+    }
+  }
+}
+
+// ---- Mobile hamburger menu ----
+.header-nav {
+  .elementor-nav-menu--toggle {
+    .elementor-menu-toggle {
+      color: $ann-blue !important;
+      border-color: $ann-blue !important;
+
+      i,
+      svg {
+        color: $ann-blue !important;
+        fill: $ann-blue !important;
+      }
+
+      &:hover {
+        color: $ann-light-blue !important;
+        border-color: $ann-light-blue !important;
+      }
+    }
+  }
+
+  // Dropdown mobile menu panel
+  .elementor-nav-menu--dropdown {
+    background-color: #ffffff !important;
+    border-top: 2px solid $ann-light-blue;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+    a.elementor-item {
+      color: $ann-blue !important;
+      border-bottom: 1px solid #f0e8e4 !important;
+      padding: 12px 20px !important;
+
+      &:hover {
+        background-color: #fff5ef !important;
+        color: $ann-light-blue !important;
+      }
+    }
+  }
+}
+
+// ---- Responsive ----
+@media (max-width: 1200px) {
+  .header-nav {
+    .elementor-widget-nav-menu {
+      .elementor-nav-menu--main {
+        .elementor-item {
+          font-size: 18px !important;
+          padding: 8px 14px !important;
+        }
+      }
+    }
+  }
+
+  .header-actions {
+    .elementor-search-form__input {
+      width: 120px !important;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header-section {
+    > .elementor-container {
+      min-height: 70px;
+    }
+  }
+
+  .header-logo {
+    .elementor-widget-image a img {
+      max-height: 65px;
+    }
+  }
+
+  .header-nav {
+    .elementor-widget-nav-menu {
+      .elementor-nav-menu--main {
+        .elementor-item {
+          font-size: 16px !important;
+          padding: 8px 10px !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-section {
+    > .elementor-container {
+      min-height: 60px;
+    }
+  }
+
+  .header-logo {
+    .elementor-widget-image a img {
+      max-height: 55px;
+    }
+  }
+
+  .header-actions {
+    gap: 6px;
+
+    .elementor-widget-search-form {
+      .elementor-search-form {
+        height: 36px;
+
+        &__input {
+          width: 100px !important;
+          font-size: 11px !important;
+        }
+
+        &__submit {
+          width: 30px !important;
+          height: 30px !important;
+          min-width: 30px !important;
+        }
+      }
+    }
+
+    .header-cart {
+      .elementor-button,
+      a.cart-button {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+
+        i, svg {
+          font-size: 15px !important;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo {
+    .elementor-widget-image a img {
+      max-height: 48px;
+    }
+  }
+
+  .header-actions {
+    .elementor-widget-search-form {
+      display: none; // hide search on very small screens, show via toggle
+    }
+  }
+}
+
+@include only-mobile {
+  .header-section {
+    .elementor-container,
+    .elementor-column,
+    .elementor-widget-wrap,
+    .elementor-widget-wrap>.elementor-element,
+    .elementor-widget-nav-menu .elementor-widget-container {
+      width: auto;
+    }
+
+    .elementor-column:first-child {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .elementor-nav-menu--dropdown.elementor-nav-menu__container {
+      position: absolute;
+      top: 0;
+    }
+
+    .elementor-nav-menu__align-center .elementor-nav-menu {
+      flex-flow: column;
+    }
+
+    .elementor-nav-menu li {
+      width: 100%;
+    }
+  }
+}

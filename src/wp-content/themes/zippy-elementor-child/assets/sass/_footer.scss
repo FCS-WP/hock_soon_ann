@@ -1,0 +1,341 @@
+// Footer Styles
+// ========================================
+
+.footer-section {
+  @include only-mobile {
+    padding: 16px 6px !important;
+  }
+}
+
+// ---- Column 1: Footer Info (Logo + Description) ----
+.footer-info {
+  padding-right: 40px;
+
+  // The heading widget has class "footer-title" on the widget wrapper
+  .footer-title {
+    .elementor-heading-title {
+      // font-family: 'Bebas Neue', sans-serif !important;
+      // font-size: 48px !important;
+      // font-weight: 400;
+      // line-height: 1.2;
+      // color: #c14c31;
+      margin-bottom: 15px;
+      // letter-spacing: 1px;
+    }
+  }
+
+  // Description text
+  .footer-description {
+    .elementor-widget-container {
+      // font-family: 'Lato', sans-serif !important;
+      // font-size: 15px !important;
+      // line-height: 1.9;
+      // color: #c14c31;
+
+      p {
+        // font-family: 'Lato', sans-serif !important;
+        // font-size: 15px !important;
+        // line-height: 1.9;
+        // color: #c14c31;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// ---- Column 2: Quick Links ----
+.footer-links {
+  // Column heading
+  .elementor-widget-heading {
+    .elementor-heading-title {
+      // font-family: 'Bebas Neue', sans-serif !important;
+      // font-size: 26px !important;
+      // font-weight: 400;
+      // color: #e8821a;
+      text-transform: uppercase;
+      // letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      // line-height: 1.2;
+    }
+  }
+
+  // Icon list items
+  .elementor-icon-list-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .elementor-icon-list-item {
+      margin-bottom: 12px;
+      padding: 0;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        .elementor-icon-list-text {
+          // font-family: 'Lato', sans-serif !important;
+          // font-size: 15px !important;
+          // font-weight: 700;
+          // color: #c14c31;
+          transition: color 0.2s ease;
+        }
+
+        &:hover .elementor-icon-list-text {
+          color: $ann-light-blue;
+        }
+      }
+
+      // Hide the checkmark icon
+      .elementor-icon-list-icon {
+        display: none !important;
+      }
+    }
+  }
+}
+
+// ---- Column 3: Contact ----
+.footer-contact {
+  // Column heading
+  .elementor-widget-heading {
+    .elementor-heading-title {
+      // font-family: 'Bebas Neue', sans-serif !important;
+      // font-size: 26px !important;
+      // font-weight: 400;
+      // color: #e8821a;
+      text-transform: uppercase;
+      // letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      // line-height: 1.2;
+    }
+  }
+
+  // Contact text block
+  .elementor-widget-text-editor {
+    .elementor-widget-container {
+      // font-family: 'Lato', sans-serif !important;
+      // font-size: 15px !important;
+      // color: #c14c31;
+      // line-height: 1.8;
+
+      p {
+        // font-family: 'Lato', sans-serif !important;
+        // font-size: 15px !important;
+        // color: #c14c31;
+        line-height: 1.8;
+        margin: 0 0 10px 0;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        // strong {
+        //   font-family: 'Lato', sans-serif !important;
+        //   font-weight: 700;
+        //   color: #c14c31;
+        // }
+
+        a {
+          // font-family: 'Lato', sans-serif !important;
+          // color: #c14c31;
+          color: $ann-blue;
+          text-decoration: none;
+          font-weight: 400;
+
+          &:hover {
+            color: $ann-light-blue;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ---- Column 4: Our Socials ----
+.footer-social {
+  // Column heading
+  .elementor-widget-heading {
+    .elementor-heading-title {
+      // font-family: 'Bebas Neue', sans-serif !important;
+      // font-size: 26px !important;
+      // font-weight: 400;
+      // color: #e8821a;
+      text-transform: uppercase;
+      // letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      // line-height: 1.2;
+    }
+  }
+
+  // Social icons row
+  .elementor-social-icons-wrapper {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: flex-start;
+
+    .elementor-grid-item {
+      display: flex;
+    }
+
+    // Base icon style
+    .elementor-social-icon {
+      width: auto !important;
+      height: auto !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 5px;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: #ffffff;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        opacity: 1 !important;
+      }
+    }
+
+    // Facebook — keep brand blue
+    .elementor-social-icon-facebook-f {
+      background-color: $ann-blue !important;
+    }
+
+    // Instagram — keep brand gradient
+    .elementor-social-icon-instagram {
+      background-color: $ann-blue !important;
+    }
+  }
+
+  // WhatsApp button (Elementor button widget)
+  .elementor-button-wrapper {
+    .elementor-button {
+      width: 70px !important;
+      height: 70px !important;
+      border-radius: 50% !important;
+      background-color: #25d366 !important;
+      padding: 0 !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      .elementor-button-content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .elementor-button-text {
+        display: none;
+      }
+
+      i,
+      svg {
+        font-size: 32px !important;
+        color: #ffffff !important;
+        fill: #ffffff !important;
+      }
+
+      &:hover {
+        background-color: #1ebe5d !important;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+      }
+    }
+  }
+}
+
+// ---- Responsive ----
+@media (max-width: 1024px) {
+  .footer-info {
+    padding-right: 20px;
+
+    .footer-title .elementor-heading-title {
+      font-size: 36px !important;
+    }
+  }
+
+  .footer-links,
+  .footer-contact,
+  .footer-social {
+    .elementor-widget-heading .elementor-heading-title {
+      font-size: 22px !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-info {
+    padding-right: 0;
+    margin-bottom: 30px;
+
+    .footer-title .elementor-heading-title {
+      font-size: 32px !important;
+    }
+
+    .footer-description .elementor-widget-container p {
+      font-size: 14px !important;
+    }
+  }
+
+  .footer-links,
+  .footer-contact,
+  .footer-social {
+    margin-bottom: 30px;
+
+    .elementor-widget-heading .elementor-heading-title {
+      font-size: 20px !important;
+      margin-bottom: 12px;
+    }
+  }
+
+  .footer-social {
+    .elementor-social-icons-wrapper {
+      .elementor-social-icon {
+        width: 44px !important;
+        height: 44px !important;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .elementor-button-wrapper .elementor-button {
+      width: 60px !important;
+      height: 60px !important;
+
+      i,
+      svg {
+        font-size: 26px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-info .footer-title .elementor-heading-title {
+    font-size: 28px !important;
+  }
+
+  .footer-links,
+  .footer-contact,
+  .footer-social {
+    .elementor-widget-heading .elementor-heading-title {
+      font-size: 18px !important;
+    }
+  }
+}
