@@ -5,22 +5,17 @@
 @import 'variables';
 @import 'common';
 
-// Header Styles
 @import 'header';
-
-// Footer Styles
 @import 'footer';
 
-// Product Carousel Shortcode
 @import 'product-carousel';
-
 @import 'home';
 @import 'shop';
 @import 'contact';
-
-.entry-title {
-  display: none !important;
-}
+@import 'search';
+@import "about-us";
+@import "single-product";
+@import "blogs";
 
 // Container form
 .form-wrapper {
@@ -154,6 +149,3 @@
     // }
   }
 }
-
-// Pages styles
-@import "about-us";

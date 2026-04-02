@@ -108,6 +108,7 @@ $secondary: #329ECD;
     box-sizing: border-box;
     box-shadow: 0 8px 18px rgba($primary, 0.18);
     margin-bottom: 20px;
+    text-transform: uppercase;
 
     &:hover {
       background: linear-gradient(to right, $ann-blue 0%, $ann-light-blue 100%);
@@ -144,9 +145,17 @@ $secondary: #329ECD;
   }
 }
 
+.home ul.products {
+  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+}
+
+.home .elementor-products-grid.elementor-wc-products {
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .woocommerce ul.products {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 18px;
   }
 

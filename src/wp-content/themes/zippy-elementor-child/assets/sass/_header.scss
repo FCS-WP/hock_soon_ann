@@ -486,7 +486,7 @@
     .elementor-widget-wrap,
     .elementor-widget-wrap>.elementor-element,
     .elementor-widget-nav-menu .elementor-widget-container {
-      width: auto;
+      width: auto !important;
     }
 
     .elementor-column:first-child {
